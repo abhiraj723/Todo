@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block main %}
+<h1 class="text-center text-info my-5">Items</h1>
+<div class="row mt-5">
+    <div class="col-sm-6 mx-auto shadow-lg rounded-2 p-4" style="background-color: white;">
+        {% if messages %}
+        {% for m in messages %}
+        <div class="row my-3">
+            <div class="col-sm-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{m}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="table-responsive">
+        <table class="table tabal-bordered table-hover">
+            <tr>
+                <th>S No.</th>
+                <th>Items</th>
+                <th>Actions</th>
+            
+            </tr>
+            {% for l in lst %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{l.item}}</td>
+                
+                <td><a href="{% url 'delItem' l.sno %}" class="btn btn-outline-danger me-1"><i class="bi bi-trash-fill"></i></a><a href="{% url 'updateItem' l.sno %}" class="btn btn-outline-success"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

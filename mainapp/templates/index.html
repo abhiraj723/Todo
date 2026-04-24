@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="row">
+    <div class="col-sm-6 mx-auto rounded-5">
+        <h1 class="text-center text-info my-5">ToDo App</h1>
+        <form class="d-flex" method="post">
+            {% csrf_token %}
+            <input class="form-control me-2 py-2 fs-3" required type="text" name="item" placeholder="Enter Items"
+                aria-label="Search" />
+            <button class="btn btn-outline-info px-4 fs-3" type="submit">Add</button>
+        </form>
+        {% if messages %}
+        {% for m in messages %}
+        <div class="row my-3">
+            <div class="col-sm-12">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{m}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        
+    </div>
+</div>
+{% endblock %}
